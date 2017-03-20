@@ -86,7 +86,8 @@
     // NOTE: call from renderer process always.
 
     return new Promise(function(resolve, reject) {
-      var id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      var now = Date.now()
+      var id = now + Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - now));
       var onSuccess = function(event, params) {
         if (params.id !== id || params.eventName !== eventName) {
           return;
